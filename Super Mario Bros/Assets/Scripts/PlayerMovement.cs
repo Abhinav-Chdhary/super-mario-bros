@@ -17,6 +17,14 @@ public class PlayerMovement : MonoBehaviour
     }
     private void HorizontalMovement()
     {
+        inputAxis = Input.GetAxis("Horizontal");
+        velocity.x = Mathf.MoveTowards(velocity.x, inputAxis*moveSpeed, moveSpeed*Time.deltaTime);
+    }
+    private void FixedUpdate()
+    {
+        Vector2 position = _rigidbody.position;
+        position += velocity * Time.fixedDeltaTime;
 
+        _rigidbody.MovePosition(position);
     }
 }
