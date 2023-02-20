@@ -28,8 +28,8 @@ public class PlayerMovement : MonoBehaviour
         position += velocity * Time.fixedDeltaTime;
 
         //bounds checking
-        Vector2 leftEdge = _camera.WorldToScreenPoint(Vector2.zero);
-        Vector2 rightEdge = _camera.WorldToScreenPoint(new Vector2(Screen.width, Screen.height));
+        Vector2 leftEdge = _camera.ScreenToWorldPoint(Vector2.zero);
+        Vector2 rightEdge = _camera.ScreenToWorldPoint(new Vector2(Screen.width+0.5f, Screen.height-0.5f));
         position.x = Mathf.Clamp(position.x, leftEdge.x, rightEdge.x);
 
         _rigidbody.MovePosition(position);
