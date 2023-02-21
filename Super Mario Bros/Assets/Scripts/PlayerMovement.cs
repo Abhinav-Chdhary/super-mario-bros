@@ -7,6 +7,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 velocity;
     public float moveSpeed = 8.0f;
     private Camera _camera;
+    public float maxJumpHeight = 5.0f;
+    public float maxJumpTime = 1.0f;
+    public float jumpForce => (2f * maxJumpHeight) / (maxJumpHeight / 2);
 
     private void Awake()
     {
