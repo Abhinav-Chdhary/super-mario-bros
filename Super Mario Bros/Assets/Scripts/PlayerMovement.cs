@@ -22,7 +22,22 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+        ground = _rigidbody.Raycast(Vector2.down);
+        if(ground)
+        {
+            GroundedMovement();
+        }
         HorizontalMovement();
+    }
+    private void GroundedMovement()
+    {
+        
+        jumping = velocity.y > 0f;
+        if (Input.GetButtonDown("Jump"))
+        {
+            velocity.y = jumpForce;
+            jumping = true;
+        }
     }
     private void HorizontalMovement()
     {
