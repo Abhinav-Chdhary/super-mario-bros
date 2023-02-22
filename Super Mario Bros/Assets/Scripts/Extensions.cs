@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Extensions : MonoBehaviour
+public static class Extensions
 {
-    // Start is called before the first frame update
-    void Start()
+    private static LayerMask layerMask = LayerMask.GetMask("Default");
+    public static bool Raycast(this Rigidbody2D _rigidbody, Vector2 direction)
     {
-        
-    }
+        if(_rigidbody.isKinematic)
+        {
+            return false;
+        }
+        float radius = 0.25f;
+        float distance = 0.375f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        RaycastHit2D hit = Physics2D.CircleCast(_rigidbody.position, radius, direction, distance, layerMask);
+        return hit.collider!=null && hit.rigidbody!=_rigidbody;
     }
 }
