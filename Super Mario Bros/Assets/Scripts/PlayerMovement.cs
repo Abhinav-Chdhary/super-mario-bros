@@ -10,6 +10,10 @@ public class PlayerMovement : MonoBehaviour
     public float maxJumpHeight = 5.0f;
     public float maxJumpTime = 1.0f;
     public float jumpForce => (2f * maxJumpHeight) / (maxJumpHeight / 2);
+    public float gravity => (-2f * maxJumpHeight) / Mathf.Pow((maxJumpTime/2f), 2);
+
+    public bool ground { get; private set; }
+    public bool jumping { get; private set; }
 
     private void Awake()
     {
